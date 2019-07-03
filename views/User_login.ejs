@@ -1,0 +1,47 @@
+<html>
+
+<head>
+
+</head>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<bdoy>
+    <p>
+        <input type="text" id="ID" placeholder="ID를 입력해주세요">
+        <input type="text" id="password" placeholder="비밀번호를 입력해주세요">
+
+        <button id="login">login</button>
+
+        <button type="button" onclick="location.href='/'">메인홈</button>
+
+    </p>
+</bdoy>
+
+<script type="text/javascript" language="javascript">
+    $('#login').on('click', function () {
+
+        $.ajax({
+            url: '/router/User/login',
+            type: 'post',
+            data: {
+                ID: document.getElementById('ID').value,
+                password: document.getElementById('password').value,
+
+            }
+        }).done(function (data) {
+            alert(data);
+            if (data == "로그인!") {
+                window.location.href = '/'
+            }
+
+        }).fail(function () {
+            alert("서버에 이상이 있습니다. kjds1235@naver.com 로 직접 연락주세요.");
+        });
+        return false;
+
+    })
+</script>
+
+</html>

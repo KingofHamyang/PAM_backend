@@ -1,0 +1,50 @@
+<html>
+
+<head>
+
+</head>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<bdoy>
+    <p>
+        <input type="text" id="ID" placeholder="ID를 입력해주세요">
+        <input type="text" id="password" placeholder="비밀번호를 입력해주세요">
+        <input type="text" id="name" placeholder="이름을 입력해주세요">
+        <input type="text" id="studentID" placeholder="학번을 입력해주세요">
+        <button id="regist">등록하기</button>
+
+        <button type="button" onclick="location.href='/'">메인홈</button>
+
+    </p>
+</bdoy>
+
+<script type="text/javascript" language="javascript">
+    $('#regist').on('click', function () {
+
+        $.ajax({
+            url: '/router/User/regist',
+            type: 'post',
+            data: {
+                ID: document.getElementById('ID').value,
+                password: document.getElementById('password').value,
+                name: document.getElementById('name').value,
+                studentID: document.getElementById('studentID').value
+            }
+        }).done(function (data) {
+            alert(data);
+            if (data = "ID 생성 완료!") {
+                window.location.href = '/'
+            }
+
+
+        }).fail(function () {
+            alert("서버에 이상이 있습니다. kjds1235@naver.com 로 직접 연락주세요.");
+        });
+        return false;
+
+    })
+</script>
+
+</html>
